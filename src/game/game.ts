@@ -10,7 +10,7 @@ import { DT, CELL, VIEW_W, VIEW_H, wrap, wrapd, rand, pick } from './world';
 
 type State = 'title' | 'play' | 'exit' | 'continue' | 'gameover';
 
-/** Smash T.V. power-ups standing in for Gauntlet's special potions (random, from level 3). */
+/** Smash T.V. power-ups standing in for Gauntlet's special potions (2-4 per maze, random). */
 const POWERUPS = [
   { code: 0x2f, icon: 'pu.shield', name: 'SHIELD' },
   { code: 0x30, icon: 'pu.rocket', name: 'ROCKETS' },
@@ -123,9 +123,10 @@ export class Game {
       }
     }
     // Gauntlet hides special potions in later levels; here they're Smash T.V. power-ups
-    if (level >= 3 && floors.length) {
-      const n = level >= 10 ? 2 : 1;
-      for (let k = 0; k < n; k++) maze.grid[pick(floors)] = pick(POWERUPS).code;
+    const n = level >= 10 ? 4 : level >= 5 ? 3 : 2;
+    for (let k = 0; k < n && floors.length; k++) {
+      const [i] = floors.splice(Math.floor(Math.random() * floors.length), 1);
+      maze.grid[i] = pick(POWERUPS).code;
     }
     for (const p of this.players) {
       p.x = start.col * CELL + CELL / 2;
@@ -393,11 +394,11 @@ export class Game {
         take();
         audio.play(SND.prize);
         this.effects.push(new Floater(x, y, pu.name, '#ff8'));
-        if (code === 0x2f) p.shieldT = 12;
-        else if (code === 0x30) [p.weapon, p.weaponT] = ['rocket', 15];
-        else if (code === 0x31) [p.weapon, p.weaponT] = ['spread', 20];
-        else if (code === 0x32) p.bladesT = 15;
-        else if (code === 0x33) p.speedT = 20;
+        if (code === 0x2f) p.shieldT = 30;
+        else if (code === 0x30) [p.weapon, p.weaponT] = ['rocket', 30];
+        else if (code === 0x31) [p.weapon, p.weaponT] = ['spread', 30];
+        else if (code === 0x32) p.bladesT = 30;
+        else if (code === 0x33) p.speedT = 30;
       }
     }
   }

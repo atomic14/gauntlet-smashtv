@@ -23,7 +23,7 @@ from the original ROMs.
 | Lobber | Mr. Shrapnel | keeps its distance and lobs shrapnel over walls |
 | Sorcerer | the flickering orb | fades in and out; can't be hit while faded |
 | Death | Mutoid Man's head | drains up to 200 health and leaves; shots glance off it, only a potion kills it (1000) |
-| Special potions | power-ups | shield, rockets, spread gun, blades, speed (random, from level 3) |
+| Special potions | power-ups | shield, rockets, spread gun, blades, speed (2 per maze, 3 from level 5, 4 from level 10) |
 
 Monsters come in Gauntlet's three strengths (shown by pips): each hit knocks one down a
 level, and generators drop a level per hit too.

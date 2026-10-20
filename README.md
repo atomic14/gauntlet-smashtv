@@ -1,5 +1,8 @@
 # Gauntlet: The Smash T.V. Edition
 
+**Play it at [smash-gauntlet.atomic14.com](https://smash-gauntlet.atomic14.com)**: on a
+desktop, with a gamepad, or on your phone.
+
 ![A contestant in Gauntlet's first maze, with ghosts (Smash T.V.'s orbs) pouring out of the bone-pile generators](docs/demo.gif)
 
 A mash-up of two arcade games in the browser. The mazes, walls, floors, doors, generators,

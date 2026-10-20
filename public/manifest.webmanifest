@@ -1,0 +1,8 @@
+{
+  "name": "Gauntlet: The Smash T.V. Edition",
+  "short_name": "Gauntlet T.V.",
+  "start_url": "./",
+  "display": "fullscreen",
+  "background_color": "#000000",
+  "theme_color": "#000000"
+}

@@ -118,3 +118,26 @@ body.touch #touch {
   color: #ff0;
   border-color: rgba(255, 255, 0, 0.5);
 }
+
+/* the link to the source, shown on the title screen in the side panel (placed by main.ts) */
+#source {
+  display: none;
+  position: fixed;
+  transform: translateX(-50%);
+  text-align: center;
+  white-space: nowrap;
+  font-family: ui-monospace, Menlo, monospace;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: #6cf;
+  text-decoration: none;
+  z-index: 2;
+}
+#source:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+body.title #source {
+  display: block;
+}

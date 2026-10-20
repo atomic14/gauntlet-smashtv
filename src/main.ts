@@ -12,6 +12,9 @@ canvas.width = W;
 canvas.height = H;
 initGfx(canvas);
 const filter = new Filter(canvas);
+const source = document.getElementById('source')!;
+// a tap on the link opens it rather than starting the game
+source.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
 
 /** Scale the screen to fit; in portrait leave room underneath for the thumbsticks. */
 function layout() {
@@ -27,6 +30,9 @@ function layout() {
   app.style.justifyContent = portrait && touch ? 'flex-start' : 'center';
   app.style.paddingTop = portrait ? `max(env(safe-area-inset-top), ${Math.round(vh * 0.06)}px)` : '0';
   filter.fit();
+  // the GitHub link sits in the title screen's side panel, under "114 mazes from the original ROM"
+  const r = canvas.getBoundingClientRect(), k = r.width / W;
+  Object.assign(source.style, { left: `${r.left + 704 * k}px`, top: `${r.top + 122 * k}px`, fontSize: `${Math.max(10, 9 * k)}px` });
 }
 addEventListener('resize', layout);
 new MutationObserver(layout).observe(document.body, { attributes: true, attributeFilter: ['class'] });
@@ -64,6 +70,7 @@ async function boot() {
     }
     game.draw();
     filter.render();
+    document.body.classList.toggle('title', game.state === 'title');
     requestAnimationFrame(frame);
   };
   requestAnimationFrame(frame);

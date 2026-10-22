@@ -478,6 +478,8 @@ export class Monster implements Body, Drawable {
   }
 
   update(g: Game) {
+    // killed earlier this tick (blades, a rocket blast): no last bite at level 0
+    if (this.dead) return;
     this.t += DT;
     this.flash = Math.max(0, this.flash - DT);
     this.biteCd -= DT;
